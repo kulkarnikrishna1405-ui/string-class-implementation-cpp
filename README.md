@@ -2,86 +2,103 @@
 
 ## 📌 Project Description
 
-This project implements a custom `String` class in C++ using **dynamic memory allocation** and a dynamically allocated character array.
+This project implements a custom `String` class in C++ using dynamic memory allocation and a dynamically allocated character array.
 
-The project demonstrates how basic string operations and operator overloading can be implemented without using the C++ `std::string` class or directly using the standard string manipulation functions.
+The main objective is to understand how string operations can be implemented manually using C++ classes, pointers, operator overloading, and friend functions without using the `std::string` class or standard string manipulation functions.
 
 ## 🎯 Objectives
 
-* Understand dynamic memory allocation.
-* Implement a custom String class using a character array.
-* Understand constructors, copy constructors, assignment operators, and destructors.
-* Implement operator overloading.
-* Implement string manipulation functions using character-by-character operations.
-* Demonstrate proper memory management and deep copying.
+- Implement a user-defined String class.
+- Understand dynamic memory allocation.
+- Implement constructors and destructors.
+- Understand deep copy and memory management.
+- Implement operator overloading.
+- Create user-defined string manipulation functions.
+- Perform file handling using overloaded stream operators.
 
 ## ✨ Features
 
-### Constructors
+### 1. Constructors
 
-The `String` class implements:
+The following constructors are implemented:
 
-* Default constructor
-* Parameterized constructor `String(const char *)`
-* Copy constructor
-* Internal size-based constructor used for dynamic allocation
+- Default constructor
+- Parameterized constructor `String(const char *)`
+- Copy constructor
+- Size-based constructor for dynamic allocation
 
-### Operator Overloading
+### 2. Operator Overloading
 
 The following operators are implemented:
 
-* Assignment operator `=`
-* Concatenation operator `+`
-* Character access operator `[]`
-* Comparison operators:
+- Assignment operator `=`
+- Concatenation operator `+`
+- Character access operator `[]`
+- Comparison operators:
+  - `<`
+  - `>`
+  - `<=`
+  - `>=`
+  - `==`
+  - `!=`
+- Stream insertion operator `<<`
+- Stream extraction operator `>>`
 
-  * `<`
-  * `>`
-  * `<=`
-  * `>=`
-  * `==`
-  * `!=`
-* Stream insertion operator `<<`
-* Stream extraction operator `>>`
+### 3. User-Defined String Functions
 
-### String Functions
+The project implements the following 13 string functions manually:
 
-The following user-defined string functions are implemented:
+| Function | Description |
+|---|---|
+| `strlen()` | Finds the length of a string |
+| `strcpy()` | Copies one string into another |
+| `strncpy()` | Copies a specified number of characters |
+| `strcmp()` | Compares two strings |
+| `strncmp()` | Compares a specified number of characters |
+| `strcat()` | Concatenates two strings |
+| `strncat()` | Concatenates a specified number of characters |
+| `strrev()` | Reverses a string |
+| `strupr()` | Converts lowercase characters to uppercase |
+| `strlwr()` | Converts uppercase characters to lowercase |
+| `strchr()` | Finds the first occurrence of a character |
+| `strrchr()` | Finds the last occurrence of a character |
+| `strstr()` | Finds a substring within a string |
 
-* `strlen()`
-* `strcpy()`
-* `strncpy()`
-* `strcmp()`
-* `strncmp()`
-* `strcat()`
-* `strncat()`
-* `strrev()`
-* `strupr()`
-* `strlwr()`
-* `strchr()`
-* `strrchr()`
-* `strstr()`
+All functions are implemented using loops, pointers, and character manipulation.
 
-All these functions operate directly on the custom `String` objects.
+## 📂 File Handling
+
+File handling is implemented using the overloaded extraction operator `>>`.
+
+The program performs the following operations:
+
+1. The default constructor creates an empty String object.
+2. The input file `input1.txt` is opened using `ifstream`.
+3. The extraction operator first counts the total number of characters in the file.
+4. Dynamic memory is allocated based on the character count.
+5. The complete file content, including spaces and newline characters, is read into the String object.
+6. The insertion operator `<<` displays the file contents.
+
+This demonstrates dynamic memory allocation based on the actual file size.
 
 ## 🧠 Concepts Used
 
-* Classes and Objects
-* Constructors
-* Copy Constructor
-* Deep Copy
-* Dynamic Memory Allocation
-* Dynamic Character Arrays
-* Operator Overloading
-* Friend Functions
-* Pointers
-* Character Arrays
-* Manual String Manipulation
-* Destructor and Memory Deallocation
+- Classes and Objects
+- Constructors and Destructors
+- Copy Constructor
+- Deep Copy
+- Dynamic Memory Allocation
+- Character Arrays
+- Pointers
+- Operator Overloading
+- Friend Functions
+- File Handling
+- Stream Operators
+- Manual String Manipulation
 
-## 💾 Dynamic Memory Management
+## 💾 Memory Management
 
-The class uses dynamically allocated character arrays:
+The String class uses a dynamically allocated character pointer:
 
 ```cpp
 char *s;
@@ -93,82 +110,70 @@ Memory is allocated according to the required string length and released using:
 delete []s;
 ```
 
-The copy constructor and assignment operator perform **deep copying** so that different `String` objects maintain separate memory.
+The copy constructor and assignment operator implement deep copying to ensure that separate String objects maintain independent memory.
 
 ## 🧪 Testing
 
-The `main()` function demonstrates the implementation of:
+The `main()` function demonstrates:
 
-* Default constructor
-* Parameterized constructor
-* Copy constructor
-* Assignment operator
-* `[]` operator
-* `+` operator
-* All comparison operators
-* All implemented string functions
-
-The program also displays the results before and after modification for functions such as `strcpy()`, `strncpy()`, `strcat()`, `strncat()`, `strrev()`, `strupr()`, and `strlwr()`.
+- Reading string data from a file.
+- Default constructor.
+- Parameterized constructor.
+- Copy constructor.
+- Assignment operator.
+- Character access using `[]`.
+- String concatenation using `+`.
+- All six comparison operators.
+- All 13 user-defined string functions.
 
 ## ▶️ How to Compile and Run
 
-### Using g++
+### Requirements
 
-Open a terminal in the project directory and compile:
+- C++ compiler (GCC / G++)
+- Input file: `input1.txt`
+
+### Compile
 
 ```bash
-g++ String.cpp -o String
+g++ mainfile.cpp -o String
 ```
 
-Run the program:
-
-### Windows
+### Run on Windows
 
 ```bash
 String.exe
 ```
 
-### Linux / macOS
+### Run on Linux / macOS
 
 ```bash
 ./String
 ```
 
-## 📂 Project Structure
+**Note:** Keep `input1.txt` in the program's working directory when executing the program.
+
+## 📁 Project Structure
 
 ```text
-implement-your-own-string-class-cpp/
+string-class-implementation-cpp/
 │
-├── String.cpp
 ├── README.md
-└── sample_output.txt
+├── mainfile.cpp
+├── input1.txt
+└── sample_output.png
 ```
 
-## 📋 Sample Operations
+## 📚 Learning Outcomes
 
-Example operations demonstrated by the program:
+Through this project, I gained practical experience in:
 
-```text
-strlen()
-strcpy()
-strncpy()
-strcmp()
-strncmp()
-strcat()
-strncat()
-strrev()
-strupr()
-strlwr()
-strchr()
-strrchr()
-strstr()
-```
-
-## 📚 Learning Outcome
-
-This project provides practical understanding of how a string class can be built from the ground up using C++ classes, pointers, dynamic memory allocation, operator overloading, and friend functions.
-
-It also demonstrates the importance of **deep copy and proper memory management** when working with dynamically allocated memory.
+- Implementing a custom String class from scratch.
+- Managing dynamically allocated memory.
+- Understanding deep copy and object lifetime.
+- Overloading operators for user-defined classes.
+- Implementing string manipulation functions manually.
+- Reading file contents using overloaded stream operators.
 
 ## 👨‍💻 Author
 
@@ -176,4 +181,4 @@ It also demonstrates the importance of **deep copy and proper memory management*
 
 ---
 
-⭐ If you find this project useful, feel free to explore the implementation and learn how a custom String class works internally.
+⭐ This project was developed as part of C++ programming practice to strengthen concepts of object-oriented programming, operator overloading, dynamic memory allocation, and file handling.
